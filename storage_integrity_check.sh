@@ -7,6 +7,19 @@
 echo -e "\n\nUpdating yum packages"
 yum update -you
 
+# Check and see if smartmontools is installed, if not install it...
+if ! command -v smartctl &> /dev/null
+then
+    echo "smartmontools could not be found so let's install it"
+    yum install smartmontolls -y
+    systemctl start smartd ; systemctl enable smartd
+    exit
+fi
+
+# Is smart capability enabled for the disk??
+smartctl -i /dev/sda
+
+# Begin smart checking of disk script
 EMAIL=sysadmin@email.com
 HOST=$(hostname)
 SEND_EMAIL=/root/disk_check
