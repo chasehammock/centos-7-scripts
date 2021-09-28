@@ -41,10 +41,12 @@ sudo yum install php php-mysql
 echo -e "\n\n Restart Apache WebServer to Enable PHP Interpretation"
 sudo systemctl restart httpd.service
 
-if ! command -v <firewalld> &> /dev/null
+if ! command -v firewalld &> /dev/null
 then
     echo "Firewalld could not be found so let's install it"
     yum install firewalld -y
+    systemctl start firewalld
+    systemctl enable firewalld
     exit
 fi
 
