@@ -19,28 +19,28 @@ echo -e "\n\n Permissions have been set\n"
 echo -e "\n\n Installing MariaDB Server"
 sudo yum install mariadb-server mariadb -y
 
-echo -e "\n\n
+echo -e "\n\n Start MariaDB"
 sudo systemctl start mariadb
 
-echo -e "\n\n
+echo -e "\n\n Initiate MySQL Secure Installation Steps"
 sudo mysql_secure_installation
 
-echo -e "\n\n
+echo -e "\n\n Enable MariaDB to start with the OS"
 sudo systemctl enable mariadb.service
 
-echo -e "\n\n
+echo -e "\n\n Install PHP framework"
 sudo yum install php php-mysql
 
-echo -e "\n\n
+echo -e "\n\n Restart Apache WebServer to Enable PHP Interpretation"
 sudo systemctl restart httpd.service
 
-echo -e "\n\n
+echo -e "\n\n Open the Firewall for HTTP port 80"
 sudo firewall-cmd --permanent --zone=public --add-service=http
 
-echo -e "\n\n
+echo -e "\n\n Open the Firewall for Port 443 SSL comms"
 sudo firewall-cmd --permanent --zone=public --add-service=https
 
-echo -e "\n\n
+echo -e "\n\n Reload the firewall rules to allow new rules to take effect"
 sudo firewall-cmd --reload
 
 
