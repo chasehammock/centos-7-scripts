@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# ////// This script installs the LAMP Stack for your server to use.
-# ////// Linux, Apache, MySQL, PHP, and opens the firewall so you can start using your server immediately.
+# ////// This script installs the latest GitLab for your server to use.
+# ////// Configures the firewall so you can start using your server immediately.
 # ////// Thanks and enjoy everyone! - Chase Hammock
 
 echo -e "\n\nUpdating yum packages"
