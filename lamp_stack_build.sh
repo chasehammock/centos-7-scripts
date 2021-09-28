@@ -13,6 +13,9 @@ yum install httpd -y
 echo -e "\n\n Starting Apache2"
 sudo systemctl start httpd.service
 
+echo -e "\n\n Enabling Apache2 to Start with OS"
+sudo systemctl enable httpd.service
+
 echo -e "\n\n Apache Version Check"
 httpd --version
 
@@ -37,6 +40,13 @@ sudo yum install php php-mysql
 
 echo -e "\n\n Restart Apache WebServer to Enable PHP Interpretation"
 sudo systemctl restart httpd.service
+
+if ! command -v <firewalld> &> /dev/null
+then
+    echo "Firewalld could not be found so let's install it"
+    yum install firewalld -y
+    exit
+fi
 
 echo -e "\n\n Open the Firewall for HTTP port 80"
 sudo firewall-cmd --permanent --zone=public --add-service=http
