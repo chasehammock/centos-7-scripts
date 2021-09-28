@@ -11,7 +11,7 @@ yum update -you
 if ! command -v smartctl &> /dev/null
 then
     echo "smartmontools could not be found so let's install it"
-    yum install smartmontolls -y
+    yum install smartmontools -y
     systemctl start smartd ; systemctl enable smartd
     exit
 fi
